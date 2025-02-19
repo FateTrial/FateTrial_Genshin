@@ -1,1 +1,5 @@
-# FateTrial_Genshin
+# 原神攻略查询插件
+
+**版本：1.0.0**
+
+# 作者 FateTrial
