@@ -2,6 +2,6 @@ name: FateTrial_Genshin
 desc: 原神查询
 help: |
   - 指令格式：原神查询 <名称>
-version: v1.0
-author: FateTrial
+version: v2.0
+author: FateTrial,Fridemn
 repo: https://github.com/FateTrial/FateTrial_Genshin
