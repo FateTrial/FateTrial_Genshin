@@ -37,6 +37,7 @@ class StrategyQuery(Star):
                     return
 
                 basic = ''.join([f'• {info}\n' for info in result['text']])
+            if result['msg'] == '角色':
                 formatted_msg = f"""
 ⭐ 角色攻略：{result['name']} ⭐
 
@@ -76,8 +77,17 @@ class StrategyQuery(Star):
 📝 数据来源：{result['yaohu']}
 """
                 yield event.plain_result(formatted_msg)
-            else:
-                yield event.plain_result("抱歉，查询失败，请稍后重试。")
+            if result['msg'] == '武器':
+                formatted_msg2 = f"""
+⭐ 武器标签：{result['name']} ⭐
+
+📍 基本信息：
+{basic}
+
+📝 数据来源：{result['yaohu']}
+"""
+                yield event.plain_result(formatted_msg2)
+
 
         except requests.RequestException as e:
             logging.error(f"请求失败: {str(e)}")
