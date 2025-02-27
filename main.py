@@ -29,6 +29,7 @@ class StrategyQuery(Star):
 
             print(result)            
 
+            image_url = result['pictureurl']
             if result['code'] == '200':
                 # 格式化输出信息
 
@@ -76,7 +77,10 @@ class StrategyQuery(Star):
 
 📝 数据来源：{result['yaohu']}
 """
-                yield event.plain_result(formatted_msg)
+                yield event.chain_result([
+                    Image.fromURL(image_url),
+                    Plain(formatted_msg),
+                ])
             if result['msg'] == '武器':
                 formatted_msg2 = f"""
 ⭐ 武器标签：{result['name']} ⭐
@@ -85,8 +89,11 @@ class StrategyQuery(Star):
 {basic}
 
 📝 数据来源：{result['yaohu']}
-"""
-                yield event.plain_result(formatted_msg2)
+"""             
+                yield event.chain_result([
+                    Image.fromURL(image_url),
+                    Plain(formatted_msg2),
+                ])
 
 
         except requests.RequestException as e:
